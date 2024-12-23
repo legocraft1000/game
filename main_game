@@ -1,0 +1,115 @@
+
+import time 
+import random
+
+
+print("welcome to the game")
+
+
+def attack(x,y,df, attacker, attacked):
+    y = y-((x/df)
+    print(attacker + " attacked " + attacked + " for " + str(x) + "damage leaving them with " + y + "hp")
+    return y
+
+
+tomato=4
+water=5
+chocolate=10
+mystery=3
+
+class player:
+    hp=100
+    atk=21
+    df=1.05
+    stm=20
+    spd=5
+
+    def choice():
+       c=input("What will you do: Fight, Eat, Magic, or Run? \n")
+       return c  
+       
+    def eat():
+        food=input("What would you like: Tomato, Chocolate, Water, Mystery Juice ")
+        if food.lower()=='tomato':
+            print("You ate the tomato")
+            print("Tastes good")
+            player.hp+=40
+            print("You gained 40 hp, your hp is now %s \n" %player.hp)
+        if food.lower()=='water':
+            print("You drank the water")
+            print("mm refreshing")
+            player.hp+=10
+            player.stm+=5
+            print("You gained 10 hp, your hp is now %s " %player.hp)
+            print("You also gained 5 stamina; your stamina is %s \n" %player.stm)
+        if food.lower()=='chocolate':
+            print("You ate the chocolate")
+            print("Yay chocolate!")
+            player.hp+=20
+            print("You gained 20 hp, your hp is now %s \n" %player.hp)
+        if food.lower()=='mystery juice':
+            print("You ate the mystery juice")
+            print("Tastes good")
+            juice_hp=random.randint(-50,50)
+            juice_stm=random.randint(-20,20)
+            player.hp+=juice_hp
+            player.stm+=juice_stm
+            if juice_hp > 0:
+                print("You gained " + str(juice_hp) + " hp, your hp is now %s" %player.hp)
+            else:
+                juice_hp=abs(juice_hp)
+                print("You lost " + str(juice_hp) + " hp, your hp is now %s" %player.hp)
+            if juice_stm > 0:
+                print("You also gained " + str(juice_stm) + " stamina, your stamina is now %s \n" %player.stm)
+            else:
+                juice_stm=abs(juice_stm)
+                print("You also lost " + str(juice_stm) + " stamina, your stamina is now %s \n" %player.stm)
+
+    def magic():
+        spells=input("Spells: Heal Prayer, Sharpen, Speed, Double Slash")
+        if spells.lower()=='heal prayer':
+            if stm >= 5:
+                player.hp+=20
+                print("Your health increased")
+                player.stamina-=5
+            else:
+                print("You're too tired to try this")
+        if spells.lower()=='sharpen':
+            if stm >= 4:
+                player.atk+=5
+                print("Your attack increased")
+                stm-=4
+            else:
+                print("You're too tired to try this")
+        if spells.lower()=='speed':
+            if stm >= 6:
+                player.speed+=3
+                print("Your speed increased")
+                stm -= 6
+                return stm
+            else:
+                print("You're too tired to try this")
+        if spells.lower()=='double slash':
+            slash=False
+            if stm >= 8:
+                stm-=8
+                return slash==True
+            else:
+                print("You're too tired to try this")
+        
+
+class opponent:
+    hp=120
+    atk=30
+    df=0.10
+    spd=4
+    intm=100
+    
+def turn():
+    if (player.spd-opponent.spd)>0:
+        if player.choice=fight:
+            attack(player.atk, opponent.hp, opponent.df)
+            
+
+#testing area
+
